@@ -4,9 +4,14 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 var resizeTimer;
 var ratio = Math.min($(window).width() / 35,$(window).height() / 35);
+var offsetX, offsetY;
 
 $(function () {
   // setup garden
+  offsetX = $("#loveHeart").width() / 2;
+  offsetY = $("#loveHeart").height() / 2 - 160;
+
+
   $loveHeart = $("#loveHeart");
   $garden = $("#garden");
   gardenCanvas = $garden[0];
@@ -16,6 +21,11 @@ $(function () {
   gardenCtx.globalCompositeOperation = "lighter";
   garden = new Garden(gardenCtx, gardenCanvas);
 
+  // set up layout for messages
+  $('#words').width(16*ratio);
+  $('#words').height(80);
+  $('#words').css('left',(gardenCanvas.width - 16*ratio) / 2);
+  $('#words').css('top',gardenCanvas.height / 2 - 80);
 
   // renderLoop
   setInterval(function () {
@@ -37,7 +47,7 @@ function getHeartPoint(angle) {
   // thanks to the sixth heart curve equation!!!
   var t = angle / Math.PI;
   var x = ratio * (16 * Math.pow(Math.sin(t), 3));
-  var y = - (ratio + 2) * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
+  var y = - (ratio) * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
   return new Array(offsetX + x, offsetY + y);
 }
 
@@ -68,17 +78,58 @@ function startHeartAnimation() {
   }, interval);
 }
 
+function randomBloom() {
+  var x = Math.random()*gardenCanvas.width;
+  var y = Math.random()*gardenCanvas.height;
+  garden.createRandomBloom(x, y);
+}
+
 (function($) {
   $.fn.lyricView = function() {
     this.each(function() {
-      var $ele = $(this), str = $ele.html(), progress = 0, child = $("#messages");
-      var timer = setInterval(function() {
-        child.css('margin-top',parseInt(child.css('margin-top')) + -1);
-        if (parseInt(child.css('margin-top')) < -child.height() + 40) {
-          clearInterval(timer);
+      var $ele = $(this), str = $ele.html(), progress = 0, child = $("#messages"), prevheight = 0;
+			$ele.html('');
+			$ele.show();
+			var timer2 = setInterval(function() {
+				var current = str.substr(progress, 1);
+				if (current == '<') {
+					progress = str.indexOf('>', progress) + 1;
+				} else {
+					progress++;
+				}
+				$ele.html(str.substring(0, progress) + (progress & 1 ? '_' : ''));
+        if (child.height() > prevheight) {
+          child.css('margin-top',-child.height() + 70);
+          prevheight = child.height();
         }
-      }, 100);
+				if (progress >= str.length) {
+					clearInterval(timer2);
+          var randomB = setInterval(function() {
+            randomBloom();
+          }, 100);
+				}
+			}, 100);
     });
     return this;
   };
 })(jQuery);
+
+function showMsg() {
+  var msg = $('#words').clone();
+  msg.addClass("overlayer");
+  msg.css({
+    "width":100+"%",
+    "height":100+"%",
+    "background-color": 'rgba(0,0,0,0.8)',
+    "position":'absolute',
+    "top":0,
+    "z-index":10,
+    "left":0
+  })
+  msg.find('div').css({
+    "padding":30,
+    "color": 'white',
+    "margin-top": 0
+  });
+  $('body').append(msg);
+}

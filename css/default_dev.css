@@ -10,19 +10,18 @@ body {
   font-size: 12px;
   overflow: auto;
 }
+#player{
+  z-index: 0;
+}
 #words{
-  width: 350px;
   position: absolute;
-  left: 36%;
-  height: 50px;
   overflow: hidden;
-  top: 40%;
 }
 
 #messages{
-  margin-top:50px;
-  line-height:25px;
+  line-height:20px;
   text-align: center;
+  display:none;
 }
 
 #loveHeart {
