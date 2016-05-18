@@ -161,11 +161,11 @@ Garden.options = {
   growSpeed: 1000 / 60,
   color: {
     rmin: 128,
-    rmax: 255,
+    rmax: 155,
     gmin: 0,
     gmax: 128,
     bmin: 0,
-    bmax: 128,
+    bmax: 255,
     opacity: 0.1
   },
   tanAngle: 60

@@ -5,6 +5,8 @@ var clientHeight = $(window).height();
 var resizeTimer;
 var ratio = Math.min($(window).width() / 35,$(window).height() / 35);
 var offsetX, offsetY;
+var counter = 0;
+var randomB;
 
 $(function () {
   // setup garden
@@ -53,7 +55,7 @@ function getHeartPoint(angle) {
 
 function startHeartAnimation() {
   var interval = 100;
-  var angle = 1;
+  var angle = 9;
   var heart = new Array();
   var animationTimer = setInterval(function () {
     var bloom = getHeartPoint(angle);
@@ -79,8 +81,11 @@ function startHeartAnimation() {
 }
 
 function randomBloom() {
-  var x = Math.random()*gardenCanvas.width;
-  var y = Math.random()*gardenCanvas.height;
+  counter ++;
+  if (counter > 299) return;
+  //var x = Math.random() > 0.5 ? Math.random()*(gardenCanvas.width - 16*2*ratio)/2 : Math.random()*(gardenCanvas.width - 16*2*ratio)/2+16*ratio*2;
+  var x = Math.random()*(gardenCanvas.width);
+  var y = ratio*13*2 + Math.random()*gardenCanvas.height;
   garden.createRandomBloom(x, y);
 }
 
@@ -102,12 +107,14 @@ function randomBloom() {
           child.css('margin-top',-child.height() + 70);
           prevheight = child.height();
         }
+        if (progress >= str.length*5/7 && counter < 299) {
+          randomB = setInterval(function() {
+            randomBloom();
+          }, 10000);
+        }
 				if (progress >= str.length) {
 					clearInterval(timer2);
-          var randomB = setInterval(function() {
-            randomBloom();
-          }, 100);
-				}
+        }
 			}, 100);
     });
     return this;

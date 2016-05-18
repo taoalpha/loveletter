@@ -5,10 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Love Letter</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <link href="css/default_dev.css" type="text/css" rel="stylesheet">
+  <style type="text/css">
+    html,body{
+      margin: 0;
+      padding: 0;
+      width:100%;
+      height:100%;
+      min-height:100%;
+      font-family: monospace;
+    }
+    body {
+      background: #FFFFEE;
+      font-size: 12px;
+      overflow: auto;
+    }
+    #player{
+      z-index: 0;
+    }
+    #words{
+      position: absolute;
+      overflow: hidden;
+    }
+
+    #messages{
+      line-height:20px;
+      text-align: center;
+      display:none;
+    }
+
+    #messages a{
+      color:#666;
+      text-transform: uppercase;
+      text-decoration:none;
+    }
+
+    #loveHeart {
+      width: 100%;
+      height: 100%;
+    }
+
+    #garden {
+      width: 100%;
+      height: 100%;
+      float:left;
+    }
+
+    #copyright{
+      text-align: center;
+      width:100%;
+      color:#666;
+    }
+
+    #copyright a{
+      color:#666;
+    }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.4.5/APlayer.min.css">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/garden_dev.js"></script>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/garden_dev.js"></script>
   <script type="text/javascript" src="js/functions_dev.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.4.5/APlayer.min.js"></script>
 </head>
@@ -87,12 +141,12 @@
       <div id="messages">
         <p>我不擅长表达感情, 而且这算是我第一次追女生, 希望没有烦到你 :) 今天是五月二十号, 我觉得我应该做些什么, 而我能做的又如此有限, 所以做这个网站给你, 也算是尽一点心意.</p>
         <p>很多时候我都不知道该如何表达我对你的关心, 我担心每天找你聊天你会烦, 所以我每次都想等一个好的时机... 而这种事儿我明显不擅长... 希望今天的时机不是错的.</p>
-<p>我不擅长揣摩别人的内心世界，尤其是女孩子的……我发觉我喜欢上你是发现我情不自禁想要联系你，懒得什么都不想做只想和你聊天却又无从开口，我才发现我对你并不了解，我只知道你是个文科生，喜欢看漫画，讨厌鸡汤，身为记者却又不愿为了观众而报道，你讨厌中国的体制，讨厌盲目而幼稚的爱国……你学习的是对我而言和天书没有差别的人类学…… </p>
-<p>我不知道你喜欢什么样的男生，一度甚至不知道你是不是喜欢男生😱，我的生活简单，算是典型技术宅，我对技术有着近乎痴迷的追逐…一度以为我会陪着电脑孤独终生😭……不过我是体验型，什么都喜欢试试，所以我期待也探索五颜六色的经历，我不会浪漫，但我可以陪你走你的浪漫。</p>
-<p>我不了解你的领域，也不想假装关心而让你反感，但我希望也觉得我是个很好的听众，所以我希望你有什么烦心的事情都能和我说，哪怕抱怨些什么，吐槽下什么，无论如何，我们认识有三年，就算不熟，朋友还是算得😌。我会去了解你的喜好，看你看的书，看你推荐的动漫，我希望我们能有更多的话题，当然这是个慢慢的过程，我愿意努力缩短以及等待它。</p>
-<p>你是个很棒的女孩，完全不同于普通的女孩😍。我对你发誓这绝不是鸡汤😝 </p>
-       <p>我确实喜欢上你了.</p>
-       <p><a href="javascript:showMsg();">click to see the whole letter</a></p>
+        <p>我不擅长揣摩别人的内心世界，尤其是女孩子的……我发觉我喜欢上你是发现我情不自禁想要联系你，懒得什么都不想做只想和你聊天却又无从开口，我才发现我对你并不了解，我只知道你是个文科生，喜欢看漫画，讨厌鸡汤，你讨厌中国的体制，讨厌盲目而幼稚的爱国……你学习的是对我而言和天书没有差别的人类学…… </p>
+        <p>我不知道你喜欢什么样的男生，一度甚至不知道你是不是喜欢男生，我的生活简单，算是典型技术宅，我对技术有着近乎痴迷的追逐…一度以为我会陪着电脑孤独终生……不过我是体验型，什么都喜欢试试，所以我期待也探索五颜六色的经历，我不会浪漫，但我可以陪你走你的浪漫。</p>
+        <p>我不了解你的领域，也不想假装关心而让你反感，但我希望也觉得我是个很好的听众，所以我希望你有什么烦心的事情都能和我说，哪怕抱怨些什么，吐槽下什么。我会去了解你的喜好，看你看的书，看你推荐的动漫，我希望我们能有更多的话题，当然这是个慢慢的过程，我愿意努力缩短以及等待它。</p>
+        <p>你是个很棒的女孩，完全不同于普通的女孩。我对你发誓这绝不是鸡汤.</p>
+        <p>我确实喜欢上你了.</p>
+        <p><a href="javascript:showMsg();">click to see the whole letter</a></p>
       </div>
     </div>
   </div>
@@ -116,12 +170,12 @@ var option = {
   mutex: true,                                                       // Optional, pause other players when this player playing
   theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
   loop: true,                                                        // Optional, loop play music, default: true
-	showlrc: 2,
+  showlrc: 2,
   music: {                                                           // Required, music info, see: ###With playlist
     title: 'Animetic Love Letter',                                          // Required, music title
     author: '木村珠莉',                          // Required, music author
     url: 'http://50.7.54.34/ost/shirobako-op-ed-single-colorful-box/ihqrrqkljs/02%20-%20Animetic%20Love%20Letter.mp3',  // Required, music url
-    pic: 'http://imgcache.qq.com/music/photo/album_300/61/300_albumpic_850161_0.jpg',   // Optional, music picture
+      pic: 'http://imgcache.qq.com/music/photo/album_300/61/300_albumpic_850161_0.jpg',   // Optional, music picture
   }
 }
 var ap = new APlayer(option);
