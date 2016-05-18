@@ -108,9 +108,9 @@ function randomBloom() {
           prevheight = child.height();
         }
         if (progress >= str.length*5/7 && counter < 299) {
-          randomB = setInterval(function() {
-            randomBloom();
-          }, 10000);
+          //randomB = setInterval(function() {
+          //  randomBloom();
+          //}, 10000);
         }
 				if (progress >= str.length) {
 					clearInterval(timer2);

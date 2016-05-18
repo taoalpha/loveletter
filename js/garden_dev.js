@@ -163,7 +163,7 @@ Garden.options = {
     rmin: 128,
     rmax: 155,
     gmin: 0,
-    gmax: 128,
+    gmax: 88,
     bmin: 0,
     bmax: 255,
     opacity: 0.1
