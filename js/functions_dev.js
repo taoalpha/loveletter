@@ -9,7 +9,7 @@ var offsetX, offsetY;
 $(function () {
   // setup garden
   offsetX = $("#loveHeart").width() / 2;
-  offsetY = $("#loveHeart").height() / 2 - 160;
+  offsetY = $("#loveHeart").height() / 2 - 130;
 
 
   $loveHeart = $("#loveHeart");
@@ -25,7 +25,7 @@ $(function () {
   $('#words').width(16*ratio);
   $('#words').height(80);
   $('#words').css('left',(gardenCanvas.width - 16*ratio) / 2);
-  $('#words').css('top',gardenCanvas.height / 2 - 80);
+  $('#words').css('top',gardenCanvas.height / 2 - 30);
 
   // renderLoop
   setInterval(function () {
@@ -115,15 +115,21 @@ function randomBloom() {
 })(jQuery);
 
 function showMsg() {
+  if ($('.overlayer').length > 0) {
+    $('.overlayer').remove();
+    return;
+  }
   var msg = $('#words').clone();
+  msg.find('a').text("click to back");
   msg.addClass("overlayer");
   msg.css({
     "width":100+"%",
     "height":100+"%",
     "background-color": 'rgba(0,0,0,0.8)',
-    "position":'absolute',
+    "position":'fixed',
     "top":0,
     "z-index":10,
+    "overflow":'auto',
     "left":0
   })
   msg.find('div').css({
