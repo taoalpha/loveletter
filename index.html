@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Love Letter</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <style type="text/css">
-    html,body{
-      margin: 0;
-      padding: 0;
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Love Letter</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style type="text/css">
+html,body{
+  margin: 0;
+  padding: 0;
+  width:100%;
+  height:100%;
+  min-height:100%;
+  font-family: monospace;
+}
+    .firstPart,.secondPart,canvas{
       width:100%;
       height:100%;
-      min-height:100%;
-      font-family: monospace;
+    }
+    .secondPart{
+      display:none;
     }
     body {
       font-size: 12px;
       overflow: auto;
     }
-    body::before{
+    .secondPart::before,
+    .firstPart::before{
       position:fixed;
       z-index: -1;
       width: 100%;
@@ -27,9 +35,15 @@
       left:0px;
       content: " ";
       display:block;
-      background-image: url("http://www.pptbackgroundstemplates.com/mediums/drawing-chocolate-and-milk-backgrounds.jpg");
-      background-size: cover;
-      -webkit-filter: brightness(500%);
+      background-size: 320%;
+      background-image: url("http://wallpaperrs.com/uploads/love/feel-my-love-wide-wallpaper-7135.jpg");
+      -webkit-filter: brightness(200%);
+      background-position: 90% 20%;
+    }
+    .firstPart::before{
+      background-image: url("http://images.forwallpaper.com/files/thumbs/preview/39/390454__silhouette_p.jpg");
+      -webkit-filter: brightness(400%);
+      background-position: 68% 20%;
     }
     #player{
       z-index: 0;
@@ -71,109 +85,63 @@
     #copyright a{
       color:#666;
     }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.4.5/APlayer.min.css">
-  <script type="text/javascript" src="js/jquery.js"></script>
-  <script type="text/javascript" src="js/garden_dev.js"></script>
-  <script type="text/javascript" src="js/functions_dev.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.4.5/APlayer.min.js"></script>
-</head>
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.4.5/APlayer.min.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/garden_dev.js"></script>
+    <script type="text/javascript" src="js/functions_dev.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.4.5/APlayer.min.js"></script>
+  </head>
 
-<body>
-  <div id="player" class="aplayer">
-    <pre class="aplayer-lrc-content">
-[00:00.00]「Animetic Love Letter」 「属于动画的情书」
-[00:04.00]作詞・作曲：桃井はるこ
-[00:08.00]編曲：渡辺剛
-[00:12.00]歌：宮森あおい(CV.木村珠莉)&安原絵麻(CV.佳村はるか)&坂木しずか(CV.千菅春香)
-[00:24.00]
-[00:27.26]体だけじゃなくて (なくて) 〖不想只看见你的身体〗
-[00:30.52]声だけではなくて (なくて) 〖也不想只听到你的声音〗
-[00:33.83]君と一緒に過ごす 時間がほしい 〖而想拥有与你一起度过的时光〗
-[00:39.28]
-[00:39.39]少しつかれてひとやすみ 〖有些疲惫就休息片刻〗
-[00:43.19]ミルクティーにドーナツ (ドーナツ) 〖奶茶加上甜甜圈〗
-[00:46.33]覗いたら 〖从中窥视的话〗
-[00:47.78]丸い世界が見えた…見えた! 〖能看见圆圆的世界〗
-[00:53.19]
-[00:54.21]好きな気持ちを伝えるには 〖确实想传达喜欢的心情〗
-[00:57.41]ずっと想い続けるしかない 〖但一直以来除了继续思念别无他法〗
-[01:00.65]気ばかり焦るけれどこつこつ ひとつひとつ 〖虽然焦躁不安 也要孜孜不倦 一步一个脚印〗
-[01:07.38]一週間にいちど会える日は 〖每周一次的放送之日〗
-[01:10.61]朝からなんだかそわそわして 〖清晨开始就坐立不安〗
-[01:13.93]他の誰かに 悟られそう 〖仿佛会被旁人觉察〗
-[01:17.82]ダメダメ…… 〖这样可不行〗
-[01:19.57]
-[01:19.68]Love Letter……君に届けたいの 〖情书 想要传递给你〗
-[01:26.52]Love Letter……受け取ってくれるかな? 〖情书 你会收下么〗
-[01:33.23]Love Letter……君に届けたいの 〖情书 想要传递给你〗
-[01:39.79]Love Letter……受け取ってくれるかな? 〖情书 你会收下么〗
-[01:45.98]
-[01:52.73]夢の中じゃなくて (なくて) 〖不是在梦境之中〗
-[01:55.99]まぼろしではなくて (なくて) 〖也不是在幻想〗
-[01:59.26]次は生身の君に 触れてみたい 〖下次想触碰到你的真身〗
-[02:04.71]
-[02:04.83]イマジネーション あふれてく 〖想象洋溢而出〗
-[02:08.57]ガラス越しのKiss! (Kiss!) 〖隔着玻璃的亲吻〗
-[02:11.56]16:9のフレームは 〖16比9的安全框〗
-[02:14.81]いらない、いらない…! 〖才不需要〗
-[02:18.79]
-[02:19.74]見えないおしゃれは コマ送りで 〖看不见的修饰来自〗
-[02:22.95]ちょっとしたこだわりをみつけて 〖在多帧连放中的吹毛求疵〗
-[02:26.10]｢かわいいよ｣とかじゃなくていいから 〖用语言形容“好可爱”之类的〗
-[02:29.58]コトバにして 〖没有也不要紧〗
-[02:32.83]一週間にいちど会えるから 〖每周一次的放送之日〗
-[02:36.04]もはや、そのためだけに生きてる 〖已成为生存的唯一意义〗
-[02:39.35]おなかすいても 眠くっても 〖即使为之空腹熬夜〗
-[02:43.13]大丈夫…… 〖也没问题〗
-[02:45.08]
-[02:45.20]Love Letter……君に届けたいの 〖情书 想要传递给你〗
-[02:52.17]Love Letter……受け取ってくれるかな? 〖情书 你会收下么〗
-[02:58.56]Love Letter……君に届けたいの 〖情书 想要传递给你〗
-[03:05.19]Love Letter……受け取ってくれるかな? 〖情书 你会收下么〗
-[03:11.49]
-[03:36.86]好きな気持ちを伝えるには 〖确实想传达喜欢的心情〗
-[03:40.19]ずっと想い続けるしかない 〖但一直以来除了继续思念别无他法〗
-[03:43.51]気ばかり焦るけれどこつこつ ひとつひとつ 〖虽然焦躁不安 也要孜孜不倦 一步一个脚印〗
-[03:50.05]一週間にいちど会える日は 〖每周一次的放送之日〗
-[03:53.28]朝からなんだかそわそわして 〖清晨开始就坐立不安〗
-[03:56.58]他の誰かに 悟られそう 〖仿佛会被旁人觉〗
-[04:00.47]ダメダメ…… 〖这样可不行〗
-[04:03.93]
-[04:05.88]Love Letter……君に届けたいの 〖情书 想要传递给你〗
-[04:12.64]Love Letter……受け取ってくれるかな? 〖情书 你会收下么〗
-[04:19.16]Love Letter……世界にひとつだけの 〖情书 想要传递给你〗
-[04:25.67]Love Letter……わたしのこのハートを… 〖情书 载着我的这份心意〗
-    </pre>
-  </div>
+  <body>
+    <div class="firstPart">
+      <canvas id="flower"></canvas>
+      <script>
+      </script>
+    </div>
 
-  <div id="loveHeart">
-    <canvas id="garden"></canvas>
-    <div id="words">
-      <div id="messages">
-        <p>我不擅长表达感情, 而且这算是我第一次追女生, 希望没有烦到你 :) 今天是五月二十号, 我觉得我应该做些什么, 而我能做的又如此有限, 所以做这个网站给你, 也算是尽一点心意.</p>
-        <p>很多时候我都不知道该如何表达我对你的关心, 我担心每天找你聊天你会烦, 所以我每次都想等一个好的时机... 而这种事儿我明显不擅长... 希望今天的时机不是错的.</p>
-        <p>我不擅长揣摩别人的内心世界，尤其是女孩子的……我发觉我喜欢上你是发现我情不自禁想要联系你，懒得什么都不想做只想和你聊天却又无从开口，我才发现我对你并不了解，我只知道你是个文科生，喜欢看漫画，讨厌鸡汤，你讨厌中国的体制，讨厌盲目而幼稚的爱国……你学习的是对我而言和天书没有差别的人类学…… </p>
-        <p>我不知道你喜欢什么样的男生，一度甚至不知道你是不是喜欢男生，我的生活简单，算是典型技术宅，我对技术有着近乎痴迷的追逐…一度以为我会陪着电脑孤独终生……不过我是体验型，什么都喜欢试试，所以我期待也探索五颜六色的经历，我不会浪漫，但我可以陪你走你的浪漫。</p>
-        <p>我不了解你的领域，也不想假装关心而让你反感，但我希望也觉得我是个很好的听众，所以我希望你有什么烦心的事情都能和我说，哪怕抱怨些什么，吐槽下什么。我会去了解你的喜好，看你看的书，看你推荐的动漫，我希望我们能有更多的话题，当然这是个慢慢的过程，我愿意努力缩短以及等待它。</p>
-        <p>你是个很棒的女孩，完全不同于普通的女孩。我对你发誓这绝不是鸡汤.</p>
-        <p>我确实喜欢上你了.</p>
-        <p><a href="javascript:showMsg();">click to see the whole letter</a></p>
+    <div class="secondPart">
+      <div id="player" class="aplayer">
+        <pre class="aplayer-lrc-content">
+        </pre>
+      </div>
+
+      <div id="loveHeart">
+        <canvas id="garden"></canvas>
+        <div id="words">
+          <div id="messages">
+            <p>我不擅长表达感情, 而且这算是我第一次追女生, 希望没有烦到你 :) 今天是五月二十号, 我觉得我应该做些什么, 而我能做的又如此有限, 所以做这个网站给你, 也算是尽一点心意.</p>
+            <p>很多时候我都不知道该如何表达我对你的关心, 我担心每天找你聊天你会烦, 所以我每次都想等一个好的时机... 而这种事儿我明显不擅长... 希望今天的时机不是错的.</p>
+            <p>我不擅长揣摩别人的内心世界，尤其是女孩子的……我发觉我喜欢上你是发现我情不自禁想要联系你，懒得什么都不想做只想和你聊天却又无从开口，我才发现我对你并不了解，我只知道你是个文科生，喜欢看漫画，讨厌鸡汤，你讨厌中国的体制，讨厌盲目而幼稚的爱国……你学习的是对我而言和天书没有差别的人类学…… </p>
+            <p>我不知道你喜欢什么样的男生，一度甚至不知道你是不是喜欢男生，我的生活简单，算是典型技术宅，我对技术有着近乎痴迷的追逐…一度以为我会陪着电脑孤独终生……不过我是体验型，什么都喜欢试试，所以我期待也探索五颜六色的经历，我不会浪漫，但我可以陪你走你的浪漫。</p>
+            <p>我不了解你的领域，也不想假装关心而让你反感，但我希望也觉得我是个很好的听众，所以我希望你有什么烦心的事情都能和我说，哪怕抱怨些什么，吐槽下什么。我会去了解你的喜好，看你看的书，看你推荐的动漫，我希望我们能有更多的话题，当然这是个慢慢的过程，我愿意努力缩短以及等待它。</p>
+            <p>你是个很棒的女孩，完全不同于普通的女孩。我对你发誓这绝不是鸡汤.</p>
+            <p>我确实喜欢上你了.</p>
+            <p><a href="javascript:showMsg();">click to see the whole letter</a></p>
+          </div>
+        </div>
+      </div>
+      <div id="copyright">
+        Inspired by <a href='http://hackerzhou.me'>hackerzhou.me</a> project.<br />
+        Copyright © 2016 <a href='http://taoalpha.me/blog'>taoalpha.me</a> 2015-2018
       </div>
     </div>
-  </div>
-  <div id="copyright">
-    Inspired by <a href='http://hackerzhou.me'>hackerzhou.me</a> project.<br />
-    Copyright © 2016 <a href='http://taoalpha.me/blog'>taoalpha.me</a> 2015-2018
-  </div>
-  <script type="text/javascript">
+    <script type="text/javascript">
+
+startFlowerAnimation()
+
 setTimeout(function () {
+  $('.firstPart').fadeOut(2000)
+  $('.secondPart').fadeIn(1000)
+},5500)
+setTimeout(function () {
+  $('.firstPart').hide()
   startHeartAnimation();
-}, 500);
+}, 6000);
 
 setTimeout(function () {
   $("#messages").lyricView();
-}, 1200)
+}, 9000)
 var option = {
   element: document.getElementById('player'),                       // Optional, player element
   narrow: false,                                                     // Optional, narrow style
@@ -182,16 +150,16 @@ var option = {
   mutex: true,                                                       // Optional, pause other players when this player playing
   theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
   loop: true,                                                        // Optional, loop play music, default: true
-  showlrc: 2,
+  //showlrc: 2,
   music: {                                                           // Required, music info, see: ###With playlist
-    title: 'Animetic Love Letter',                                          // Required, music title
-    author: '木村珠莉',                          // Required, music author
-    url: 'http://50.7.54.34/ost/shirobako-op-ed-single-colorful-box/ihqrrqkljs/02%20-%20Animetic%20Love%20Letter.mp3',  // Required, music url
-      pic: 'http://imgcache.qq.com/music/photo/album_300/61/300_albumpic_850161_0.jpg',   // Optional, music picture
+    title: 'love to be loved by you',                                          // Required, music title
+    author: 'Marc Terenzi',                          // Required, music author
+    url: './assets/lovetobelovedbyyou.mp3',  // Required, music url
+    pic: 'http://marc.sarah-connor.org/disco/awesome_back.jpg',   // Optional, music picture
   }
 }
 var ap = new APlayer(option);
 ap.init();
-	</script>
-</body>
+    </script>
+  </body>
 </html>

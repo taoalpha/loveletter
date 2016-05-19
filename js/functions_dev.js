@@ -9,16 +9,23 @@ var counter = 0;
 var randomB;
 
 $(function () {
+  $flower = $("#flower");
+  flowerCanvas = $flower[0];
+  flowerCanvas.width = $("#flower").width();
+  flowerCanvas.height = $("#flower").height();
+  flowerCtx = flowerCanvas.getContext("2d");
+  flowerCtx.globalCompositeOperation = "lighter";
+  flower = new Garden(flowerCtx, flowerCanvas);
   // setup garden
-  offsetX = $("#loveHeart").width() / 2;
-  offsetY = $("#loveHeart").height() / 2 - 130;
+  offsetX = $("body").width() / 2;
+  offsetY = $("body").height() / 2 - 130;
 
 
   $loveHeart = $("#loveHeart");
   $garden = $("#garden");
   gardenCanvas = $garden[0];
-  gardenCanvas.width = $("#loveHeart").width();
-  gardenCanvas.height = $("#loveHeart").height();
+  gardenCanvas.width = $("body").width();
+  gardenCanvas.height = $("body").height();
   gardenCtx = gardenCanvas.getContext("2d");
   gardenCtx.globalCompositeOperation = "lighter";
   garden = new Garden(gardenCtx, gardenCanvas);
@@ -27,11 +34,12 @@ $(function () {
   $('#words').width(16*ratio);
   $('#words').height(80);
   $('#words').css('left',(gardenCanvas.width - 16*ratio) / 2);
-  $('#words').css('top',gardenCanvas.height / 2 - 30);
+  $('#words').css('top',gardenCanvas.height / 2 - 70);
 
   // renderLoop
   setInterval(function () {
     garden.render();
+    flower.render();
   }, Garden.options.growSpeed);
 
 });
@@ -53,9 +61,44 @@ function getHeartPoint(angle) {
   return new Array(offsetX + x, offsetY + y);
 }
 
+function getSpiral(angle) {
+  // thanks to the sixth heart curve equation!!!
+  var t = angle / Math.PI;
+  var x = ratio/2 * (t*Math.sin(t) + Math.cos(t));
+  var y = ratio/2 * (Math.sin(t) - t*Math.cos(t));
+  return new Array(offsetX + x, offsetY + y + 80);
+}
+
+function startFlowerAnimation() {
+  var interval = 10;
+  var angle = 9;
+  var heart = new Array();
+  var animationTimer = setInterval(function () {
+    var bloom = getSpiral(angle);
+    var draw = true;
+    for (var i = 0; i < heart.length; i++) {
+      var p = heart[i];
+      var distance = Math.sqrt(Math.pow(p[0] - bloom[0], 2) + Math.pow(p[1] - bloom[1], 2));
+      if (distance < Garden.options.bloomRadius.max * 1.3) {
+        draw = false;
+        break;
+      }
+    }
+    if (draw) {
+      heart.push(bloom);
+      flower.createRandomBloom(bloom[0], bloom[1]);
+    }
+    if (angle >= 155) {
+      clearInterval(animationTimer);
+    } else {
+      angle += 0.15;
+    }
+  }, interval);
+}
+
 function startHeartAnimation() {
   var interval = 100;
-  var angle = 9;
+  var angle = 11;
   var heart = new Array();
   var animationTimer = setInterval(function () {
     var bloom = getHeartPoint(angle);
