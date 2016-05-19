@@ -18,7 +18,7 @@ $(function () {
   flower = new Garden(flowerCtx, flowerCanvas);
   // setup garden
   offsetX = $("body").width() / 2;
-  offsetY = $("body").height() / 2 - 130;
+  offsetY = $("body").height() / 2 - 110;
 
 
   $loveHeart = $("#loveHeart");
@@ -34,7 +34,7 @@ $(function () {
   $('#words').width(16*ratio);
   $('#words').height(80);
   $('#words').css('left',(gardenCanvas.width - 16*ratio) / 2);
-  $('#words').css('top',gardenCanvas.height / 2 - 100);
+  $('#words').css('top',gardenCanvas.height / 2 - 80);
   $('#loveHeart').height($('#flower').height() - 75);
 
   // renderLoop
