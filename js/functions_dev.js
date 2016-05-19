@@ -35,6 +35,7 @@ $(function () {
   $('#words').height(80);
   $('#words').css('left',(gardenCanvas.width - 16*ratio) / 2);
   $('#words').css('top',gardenCanvas.height / 2 - 70);
+  $('#loveHeart').height($('#flower').height() - 75);
 
   // renderLoop
   setInterval(function () {

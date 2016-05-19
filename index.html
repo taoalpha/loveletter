@@ -80,6 +80,8 @@ html,body{
       text-align: center;
       width:100%;
       color:#666;
+      position: absolute;
+      bottom: 0px;
     }
 
     #copyright a{
@@ -134,15 +136,15 @@ startFlowerAnimation()
 setTimeout(function () {
   $('.firstPart').fadeOut(2000)
   $('.secondPart').fadeIn(1000)
-},5500)
+},6500)
 setTimeout(function () {
   $('.firstPart').hide()
   startHeartAnimation();
-}, 6000);
+}, 7000);
 
 setTimeout(function () {
   $("#messages").lyricView();
-}, 9000)
+}, 10000)
 var option = {
   element: document.getElementById('player'),                       // Optional, player element
   narrow: false,                                                     // Optional, narrow style
