@@ -159,7 +159,7 @@ function randomBloom() {
 				if (progress >= str.length) {
 					clearInterval(timer2);
         }
-			}, 175);
+			}, 150);
     });
     return this;
   };
